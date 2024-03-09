@@ -1,0 +1,19 @@
+{DONE -oStatistica : При добавлении пластины кол-во браков и годных удваивается}
+{DONE -oStatistica : SaveSTS сохраняет . и , (нужно переделать)}
+{TODO -oStatistica :
+Diametr : WORD;
+    LDiametr: Real;
+    Radius  : Real;
+    LRadius : Real;
+    Chord   : Real;}
+{TODO -oStatistica : Kx, Ky, X1, X2, Y1, Y2: Single; // Было Real}
+{DONE -oViewOK : объявление GradientRec посмотреть}
+
+{DONE -oViewOK : Попробовать градиент}
+{TODO -oStatistica : Сделать ресайз по X}
+{DONE -oViewData : в W98 не прозрачные значки}
+{TODO -oViewData : Допилить значения}
+{DONE -ouWViewer : Не корректно отображается версия в W98}
+{DONE -ouWViewer : Защитить от крупных шрифтов}
+{DONE -oViewOK  : если в пластине одни браки - DBZ}
+{DONE -oViewFails : в стринггриде просмотра параметров кристалла фокус бегает по ячейкам}

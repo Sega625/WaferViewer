@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+
+<body bgcolor="#CCCCFF">
+<p align="center"><font face="Tahoma"><font size="4"><a name="Start"></a>Введение</font><b><font color="#000080"> </font> </b>
+</font></p>
+<p align="left">Программа <span lang="en-us"><b>WaferViewer</b> </span>
+предназначена для просмотра и анализа файлов статистики с расширение
+<span lang="en-us">.sts </span>и <span lang="en-us">.mdb</span></p>
+<p align="center"><img border="0" src="WV2" width="576" height="360"></p>
+<p align="left"><span lang="ru">С ее помощью можно:</span></p>
+<ul>
+	<li>
+	<p align="left"><span lang="en-us">&nbsp;</span><a href="#Map">просмотреть карту годности</a></p></li>
+	<li>
+	<p align="left"><span lang="en-us">&nbsp;</span><a href="#ChipParams">просмотреть измеренные параметры каждого кристалла</a></p></li>
+	<li>
+	<p align="left"><span lang="en-us">&nbsp;</span><a href="#Fails">просмотреть разбраковку по тестам</a></p></li>
+	<li>
+	<p align="left"><span lang="en-us">&nbsp;</span><a href="#PD">просмотреть результаты анализа на ПД (повторяющийся дефект)</a></p>
+	</li>
+	<li>
+	<p align="left"><span lang="en-us">&nbsp;</span><a href="#Print">распечатать все данные по пластине на принтер</a></p>
+	</li>
+</ul>
+<p align="center"><font size="4" face="Tahoma"><a name="Map"></a>Просмотр карты годности</font></p>
+<p align="left">Для просмотра карты годности пластины нужно сначала загрузить ее в программу. Это можно сделать 3-мя способами:</p>
+<ol>
+	<li>
+	<p align="left">Нажать на пункт меню &quot;Файл&quot;, затем в ниспадающем меню нажать 
+	&quot;Открыть&quot; (либо нажать сочетание клавиш <span lang="en-us">&quot;Ctrl+O&quot;</span>) и выбрать нужный файл статистики<span lang="en-us">.</span></p></li>
+	<li>
+	<p align="left">Перетащить мышкой файл статистики в окно программы.</p></li>
+	<li>
+	<p align="left">Два раза кликнуть на файл статистики (только для файлов	</span>.sts<span lang="ru">). При этом программа должна быть перед этим запущена хоть раз.</p></li>
+</ol>
+<p align="left">После этого у вас должно появиться похожее окно:</p>
+<p align="center"><img border="0" src="WV3" width="576" height="444"></p>
+<p align="left">В панели &quot;Инф-ция о пластине&quot; выводится основная информация по пластине. Также в этой панели вы можете изменить основные цвета отображения кристаллов, нажав на соответствующий 
+цветной значок.</p>
+<p align="left">В панели &quotНастройки&quot вы сможете, используя кнопки 
+виртуального джойстика 
+уменьшить или увеличить размеры и масштаб карты годности. Также можно менять масштаб карты с помощью колесика мыши и одновременно нажатой клавишей
+<span lang="en-us">&quot;Ctrl&quot;.</span> Кнопка &quot;А&quot; предназначена для автоматического выбора масштаба карты годности. При достаточном размере 
+кристаллов на их изображениях появятся цифры, обозначающие номер брака. Кнопка &quot;Б&quot; подсвечивает базовый кристалл. Кнопка &quot;П&quot; делает прозрачной область карты годности</span>
+<span lang="ru">и панель &quot;Инф-ция о пластине&quot;, ползунок 
+плавно меняет прозрачность всего окна (для </span><span lang="en-us">WinXP
+</span>и выше). Это может быть полезным, например, при сравнении 1 и 2 замеров.</p>
+<p align="center"><a href="#Start">в начало</a></p>
+<span lang="ru">
+<p align="center"><font size="4" face="Tahoma"><a name="ChipParams"></a>Просмотр параметров по каждому кристаллу</font></p>
+<p align="left">Для просмотра параметров кристалла нужно в области отображения 
+карты годности нажать на нужный кристалл, при этом появится окошко со всеми 
+измеренными параметрами для этого кристалла, а сам кристалл подсветится желтым 
+цветом:</p>
+<p align="center"><img border="0" src="PARAMS" width="427" height="366"></p>
+<p align="center"><a href="#Start">в начало</a></p>
+<p align="center"><font size="4" face="Tahoma"><a name="Fails"></a>Просмотр 
+разбраковки по тестам</font></p>
+<p align="left">Для просмотра разбраковки по тестам нужно нажать на пункт 
+меню &quot;Анализ&quot;, затем в ниспадающем меню нажать &quot;Разбраковка&quot; или нажать 
+сочетание клавиш </span><span lang="en-us">&quot;Ctrl+R&quot;</span> (при этом пластина 
+уже должна быть загружена). Появится следующее окно:</p>
+<p align="center"><img border="0" src="FAILS" width="473" height="254"></p>
+<p align="left">Отображаются только браки, количество которых больше нуля. При 
+желании можно изменить цвет любого брака и немедленно увидеть на карте его 
+распределение нажав на соответствующий цветной значок:</p>
+<p align="center"><img border="0" src="FAILS2" width="576" height="285"></p>
+<p align="center"><a href="#Start">в начало</a></p>
+<span lang="ru">
+<p align="center"><font size="4" face="Tahoma"><a name="PD"></a>Просмотр ПД</font></p>
+<p align="left">Для просмотра ПД нужно нажать на пункт меню &quot;Анализ&quot;, затем в 
+ниспадающем меню нажать &quot;ПД&quot; или нажать сочетание клавиш <span lang="en-us">&quot;Ctrl+D&quot;</span> 
+(при этом пластина уже должна быть загружена и иметь ненулевой размер кадра). 
+Появится следующее окно:</span></p>
+<span lang="ru">
+<p align="center"><img border="0" src="PD" width="117" height="114"></p>
+<p align="left">Цифры в клеточках указывают сколько годных кристаллов в данной 
+позиции кадра. Если количество годных равно 0, то кристалл окрашивается в 
+красный цвет (ПД), в противном случае - в зеленый.</p>
+<p align="center"><a href="#Start">в начало</a></p>
+<p align="center"><font size="4" face="Tahoma"><a name="Print"></a>Распечатка 
+всех данных по пластине на принтер</font></p>
+<p align="left">Для распечатки всех данных по пластине на принтер нужно нажать 
+на пункт меню &quot;Файл&quot;, затем в ниспадающем меню нажать &quot;Распечатать&quot; (либо нажать 
+сочетание клавиш
+	<span lang="en-us">&quot;Ctrl+P&quot;</span>) и в стандартном диалоге выбора принтера нажать </span><span lang="en-us">&quot;OK&quot;.</span></p>
+<span lang="ru">
+<p align="center"><a href="#Start">в начало</a></p>
+
+</body>
+
+</html>
