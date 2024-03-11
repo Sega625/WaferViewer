@@ -488,6 +488,9 @@ begin                                                                           
            ((FlP_Enabled) and (Res = 2)) then                                               //
         begin                                                                               //
           rTmpSingle := Chip[Y, X].ChipParams[TestsCB.ItemIndex].Value;                     //
+
+          if (rTmpSingle = NotSpec) or (rTmpSingle = -NotSpec) then Continue; // Пропустим неизмеренные параметры
+
           try                                                                               //
             TmpSingle := RoundTo(rTmpSingle, NDig);                                         //
           except                                                                            //

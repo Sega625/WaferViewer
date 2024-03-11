@@ -1,4 +1,5 @@
-{DONE -oStatistica : При добавлении пластины кол-во браков и годных удваивается}
+{DONE -oViewOK : При распределении считаютя NotSpec параметры}
+{DONE -oViewOK : При добавлении пластины кол-во браков и годных удваивается}
 {DONE -oStatistica : SaveSTS сохраняет . и , (нужно переделать)}
 {TODO -oStatistica :
 Diametr : WORD;
