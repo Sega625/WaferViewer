@@ -1,8 +1,8 @@
 object OKDlg: TOKDlg
   Left = 287
   Top = 272
-  Width = 775
-  Height = 557
+  Width = 904
+  Height = 271
   BorderIcons = [biSystemMenu]
   Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077
   Color = clBtnFace
@@ -148,7 +148,7 @@ object OKDlg: TOKDlg
   object MainSB: TScrollBox
     Left = 4
     Top = 180
-    Width = 752
+    Width = 880
     Height = 48
     HorzScrollBar.Visible = False
     VertScrollBar.Increment = 20
@@ -164,7 +164,7 @@ object OKDlg: TOKDlg
       Alignment = taCenter
       AutoSize = False
       Caption = #1055#1072#1088#1072#1084#1077#1090#1088
-      Color = 10204370
+      Color = 8838374
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -202,7 +202,7 @@ object OKDlg: TOKDlg
       Alignment = taCenter
       AutoSize = False
       Caption = #1058#1086#1095#1085'.'
-      Color = 10204370
+      Color = 8838374
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -311,7 +311,7 @@ object OKDlg: TOKDlg
       Transparent = False
     end
     object HMaxLab: TStaticText
-      Left = 542
+      Left = 478
       Top = 2
       Width = 62
       Height = 18
@@ -330,7 +330,7 @@ object OKDlg: TOKDlg
       Transparent = False
     end
     object MedLab0: TStaticText
-      Left = 478
+      Left = 606
       Top = 22
       Width = 62
       Height = 2
@@ -356,7 +356,7 @@ object OKDlg: TOKDlg
     end
     object HFailPLab: TStaticText
       Tag = 2
-      Left = 679
+      Left = 807
       Top = 2
       Width = 71
       Height = 18
@@ -377,7 +377,7 @@ object OKDlg: TOKDlg
     end
     object FailPLab: TStaticText
       Tag = 2
-      Left = 679
+      Left = 807
       Top = 24
       Width = 71
       Height = 22
@@ -404,7 +404,7 @@ object OKDlg: TOKDlg
     end
     object FailPLab0: TStaticText
       Tag = 2
-      Left = 679
+      Left = 807
       Top = 22
       Width = 71
       Height = 2
@@ -450,7 +450,7 @@ object OKDlg: TOKDlg
     end
     object HOKPLab: TStaticText
       Tag = 1
-      Left = 606
+      Left = 734
       Top = 2
       Width = 71
       Height = 18
@@ -471,7 +471,7 @@ object OKDlg: TOKDlg
     end
     object OKPLab: TStaticText
       Tag = 1
-      Left = 606
+      Left = 734
       Top = 24
       Width = 71
       Height = 22
@@ -498,7 +498,7 @@ object OKDlg: TOKDlg
     end
     object OKPLab0: TStaticText
       Tag = 1
-      Left = 606
+      Left = 734
       Top = 22
       Width = 71
       Height = 2
@@ -523,14 +523,14 @@ object OKDlg: TOKDlg
       Transparent = False
     end
     object HMedLab: TStaticText
-      Left = 478
+      Left = 606
       Top = 2
       Width = 62
       Height = 18
       Alignment = taCenter
       AutoSize = False
       Caption = #1052#1077#1076'.'
-      Color = 10204370
+      Color = 12508644
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -542,7 +542,7 @@ object OKDlg: TOKDlg
       Transparent = False
     end
     object MaxLab0: TStaticText
-      Left = 542
+      Left = 478
       Top = 22
       Width = 62
       Height = 2
@@ -574,7 +574,7 @@ object OKDlg: TOKDlg
       Alignment = taCenter
       AutoSize = False
       Caption = #1053#1086#1088#1084#1072' '#1053'.'
-      Color = 10204370
+      Color = 13160430
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
@@ -644,7 +644,7 @@ object OKDlg: TOKDlg
       Alignment = taCenter
       AutoSize = False
       Caption = #1053#1086#1088#1084#1072' '#1042'.'
-      Color = 10204370
+      Color = 13160430
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
@@ -731,7 +731,7 @@ object OKDlg: TOKDlg
       Text = '123'
     end
     object MedLab: TEdit
-      Left = 478
+      Left = 606
       Top = 24
       Width = 62
       Height = 22
@@ -755,7 +755,7 @@ object OKDlg: TOKDlg
       Text = '123'
     end
     object MaxLab: TEdit
-      Left = 542
+      Left = 478
       Top = 24
       Width = 62
       Height = 22
@@ -801,6 +801,142 @@ object OKDlg: TOKDlg
       ReadOnly = True
       TabOrder = 27
       Text = '123'
+    end
+    object HQ1Lab: TStaticText
+      Left = 542
+      Top = 2
+      Width = 62
+      Height = 18
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '1 '#1082#1074#1072#1088#1090'.'
+      Color = 12508644
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 28
+      Transparent = False
+    end
+    object Q1Lab: TEdit
+      Left = 542
+      Top = 24
+      Width = 62
+      Height = 22
+      TabStop = False
+      AutoSize = False
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BiDiMode = bdRightToLeftNoAlign
+      BorderStyle = bsNone
+      Ctl3D = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentCtl3D = False
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 29
+      Text = '123'
+    end
+    object Q1Lab0: TStaticText
+      Left = 542
+      Top = 22
+      Width = 62
+      Height = 2
+      Alignment = taCenter
+      AutoSize = False
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clPurple
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowAccelChar = False
+      ShowHint = False
+      TabOrder = 30
+      Transparent = False
+    end
+    object HQ3Lab: TStaticText
+      Left = 670
+      Top = 2
+      Width = 62
+      Height = 18
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '3 '#1082#1074#1072#1088#1090'.'
+      Color = 12508644
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 31
+      Transparent = False
+    end
+    object Q3Lab: TEdit
+      Left = 670
+      Top = 24
+      Width = 62
+      Height = 22
+      TabStop = False
+      AutoSize = False
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BiDiMode = bdRightToLeftNoAlign
+      BorderStyle = bsNone
+      Ctl3D = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentCtl3D = False
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 32
+      Text = '123'
+    end
+    object Q3Lab0: TStaticText
+      Left = 670
+      Top = 22
+      Width = 62
+      Height = 2
+      Alignment = taCenter
+      AutoSize = False
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clPurple
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowAccelChar = False
+      ShowHint = False
+      TabOrder = 33
+      Transparent = False
     end
   end
 end

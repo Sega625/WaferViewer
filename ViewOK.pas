@@ -24,11 +24,13 @@ type
   end;
   TGroups = record
     MaxQuantity: WORD;
-    AvrVal     : Single;
-    MedVal     : Single;
-    MinVal     : Single;
-    MaxVal     : Single;
-    Group      : array of TGroup;
+    AvrVal : Single;
+    MinVal : Single;
+    MaxVal : Single;
+    Q1Val  : Single;
+    MedVal : Single;
+    Q3Val  : Single;
+    Group  : array of TGroup;
   end;
 
   TOKDlg = class(TForm)
@@ -64,6 +66,12 @@ type
     MedLab: TEdit;
     MaxLab: TEdit;
     MinLab: TEdit;
+    HQ1Lab: TStaticText;
+    Q1Lab: TEdit;
+    Q1Lab0: TStaticText;
+    HQ3Lab: TStaticText;
+    Q3Lab: TEdit;
+    Q3Lab0: TStaticText;
     
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -191,15 +199,21 @@ begin                                                                           
   TCntrEdit(MinLab).RecreateWnd;                                                      //
   pPointer(AvrLab)^ := TCntrEdit;                                                     //
   TCntrEdit(AvrLab).RecreateWnd;                                                      //
-  pPointer(MedLab)^ := TCntrEdit;                                                     //
-  TCntrEdit(MedLab).RecreateWnd;                                                      //
   pPointer(MaxLab)^ := TCntrEdit;                                                     //
   TCntrEdit(MaxLab).RecreateWnd;                                                      //
+  pPointer(Q1Lab)^ := TCntrEdit;                                                      //
+  TCntrEdit(Q1Lab).RecreateWnd;                                                       //
+  pPointer(MedLab)^ := TCntrEdit;                                                     //
+  TCntrEdit(MedLab).RecreateWnd;                                                      //
+  pPointer(Q3Lab)^ := TCntrEdit;                                                      //
+  TCntrEdit(Q3Lab).RecreateWnd;                                                       //
                                                                                       //
   MinLab.DoubleBuffered := True;                                                      //
   AvrLab.DoubleBuffered := True;                                                      //
-  MedLab.DoubleBuffered := True;                                                      //
   MaxLab.DoubleBuffered := True;                                                      //
+  Q1Lab.DoubleBuffered  := True;                                                      //
+  MedLab.DoubleBuffered := True;                                                      //
+  Q3Lab.DoubleBuffered  := True;                                                      //
 end;                                                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -560,14 +574,27 @@ begin                                                                           
     if Count <> 0 then                                                                      //
     begin                                                                                   //
       AvrVal := TmpVal/Count;                                                               //
+                                                                                            //
       SortMassByValue(MedMass);                                                             //
-      if Odd(Count) then MedVal :=  MedMass[ Count div 2]                                   //
+      if Odd(Count) then MedVal :=  MedMass[Count div 2]                                    //
                     else MedVal := (MedMass[(Count div 2)-1]+MedMass[Count div 2])/2;       //
+      if Odd(Count div 2) then                                                              //
+      begin                                                                                 //
+        Q1Val := MedMass[Count div 4];                                                      //
+        Q3Val := MedMass[3*(Count div 2)];                                                  //
+      end                                                                                   //
+      else                                                                                  //
+      begin                                                                                 //
+        Q1Val := (MedMass[(Count div 4)-1]+MedMass[Count div 4])/2;                         //
+        Q3Val := (MedMass[(3*(Count div 4))-1]+MedMass[3*(Count div 4)])/2;                 //
+      end;                                                                                  //
     end                                                                                     //
     else                                                                                    //
     begin                                                                                   //
       AvrVal :=  0.0;                                                                       //
+      Q1Val  :=  0.0;                                                                       //
       MedVal :=  0.0;                                                                       //
+      Q3Val  :=  0.0;                                                                       //
     end;                                                                                    //
                                                                                             //
     DecimalSeparator := ',';                                                                //
@@ -580,8 +607,10 @@ begin                                                                           
                             else NMaxLab.Caption := FormatFloat('0.000', TmpSingle);        //
     MinLab.Text := FormatFloat('0.000', MinVal);                                            //
     AvrLab.Text := FormatFloat('0.000', AvrVal);                                            //
-    MedLab.Text := FormatFloat('0.000', MedVal);                                            //
     MaxLab.Text := FormatFloat('0.000', MaxVal);                                            //
+    Q1Lab.Text  := FormatFloat('0.000', Q1Val );                                            //
+    MedLab.Text := FormatFloat('0.000', MedVal);                                            //
+    Q3Lab.Text  := FormatFloat('0.000', Q3Val );                                            //
     OKPLab.Caption   := IntToStr(NOKch);                                                    //
     FailPLab.Caption := IntToStr(NFail);                                                    //
                                                                                             //
@@ -1027,8 +1056,8 @@ begin                                                                           
         TextOut(dX, XRect.Bottom+1*dY, 'Параметр   : '+TestsCB.Items[TestsCB.ItemIndex]);                               //
         TextOut(dX, XRect.Bottom+2*dY, 'Мин.       : '+FormatFloat('0.000', Groups.MinVal));                            //
         TextOut(dX, XRect.Bottom+3*dY, 'Средн.     : '+FormatFloat('0.000', Groups.AvrVal));                            //
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         TextOut(dX, XRect.Bottom+4*dY, 'Макс.      : '+FormatFloat('0.000', Groups.MaxVal));                            //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
         TextOut(dX, XRect.Bottom+5*dY, 'Норма мин. : '+FormatFloat('0.000', TestsParams[TestsCB.ItemIndex].Norma.Min)); //
         TextOut(dX, XRect.Bottom+6*dY, 'Норма макс.: '+FormatFloat('0.000', TestsParams[TestsCB.ItemIndex].Norma.Max)); //
                                                                                                                         //
@@ -1231,6 +1260,7 @@ end;                                               //
 procedure TCntrEdit.CreateParams(var Params: TCreateParams);
 begin
   inherited CreateParams(Params);
+
   Params.Style := Params.Style or ES_CENTER;
 end;
 
