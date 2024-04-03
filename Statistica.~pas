@@ -1908,7 +1908,7 @@ function TStatistica.SaveSTS(const STSfName: TFileName): Boolean;               
 var                                                                                                  //
   INIfName: TIniFile;                                                                                //
   X, Y: WORD;                                                                                        //
-  n, P: WORD;                                                                                        //
+  n: WORD;                                                                                           //
   FS: TFileStream;                                                                                   //
   DateTime: TDateTime;                                                                               //
   Str: String;                                                                                       //
