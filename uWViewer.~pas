@@ -595,7 +595,7 @@ var                                                                             
   FData, Sheet, Range: Variant;                                                   //
   m, n: DWORD;                                                                    //
 begin                                                                             //
-  XL := CreateOleObject(GetExcelAppName2());
+  XL := CreateOleObject(GetExcelAppName());
 //  XL := CreateOleObject(ClassIDToProgID(CLASS_WordApplication))as _Application);
   XL.DisplayAlerts := False;
   XL.WorkBooks.Add;
@@ -1293,9 +1293,9 @@ begin                                                               //
       mPrint.Enabled := True;                                       //
       mPrMap.Enabled := True;                                       //
 
-//      ShowMessage(GetExcelAppName2());
+      ShowMessage(GetExcelAppName2());
 
-      if CLSIDFromProgID(PWideChar(WideString(GetExcelAppName2())), ClsID) = S_OK then
+      if CLSIDFromProgID(PWideChar(WideString(GetExcelAppName())), ClsID) = S_OK then 
         mExcel.Enabled := True;                                     //
       mFull.Enabled  := True;                                       //
       mFails.Enabled := True;                                       //

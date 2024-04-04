@@ -314,7 +314,7 @@ begin
 end;
 
 //////////////////////////////////////////////////////////////
-function GetExcelAppName(): string;                         
+function GetExcelAppName(): string;                         //
 
   function GetExcelPath: string;
   begin
