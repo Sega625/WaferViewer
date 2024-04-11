@@ -581,7 +581,7 @@ begin                                                                           
       if Odd(Count div 2) then                                                              //
       begin                                                                                 //
         Q1Val := MedMass[Count div 4];                                                      //
-        Q3Val := MedMass[3*(Count div 2)];                                                  //
+        Q3Val := MedMass[3*(Count div 4)]; //                                                 //
       end                                                                                   //
       else                                                                                  //
       begin                                                                                 //
