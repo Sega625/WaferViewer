@@ -635,7 +635,7 @@ begin                                                                           
 
   Sheet := XL.ActiveWorkBook.Sheets[1];
   Sheet.Activate;
-  Range := Sheet.Range[Sheet.Cells[1, 1], Sheet.Cells[VarArrayHighBound(FData, 1),VarArrayHighBound(FData, 2)]];
+  Range := Sheet.Range[Sheet.Cells[1, 1], Sheet.Cells[VarArrayHighBound(FData, 1), VarArrayHighBound(FData, 2)]];
 
   Range.Value := FData;
 
