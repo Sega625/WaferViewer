@@ -16,7 +16,7 @@ object PDDlg: TPDDlg
   Scaled = False
   OnClose = FormClose
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 13
   object PBox: TPaintBox
     Left = 2

@@ -115,8 +115,10 @@ begin                                                                           
     PBox.Height := WBitmap.Height;                                                                  //
     PBox.Top  := 2;                                                                                 //
     PBox.Left := 2;                                                                                 //
-    self.Width  := PBox.Width+10;                                                                   //
-    self.Height := PBox.Height+28;                                                                  //
+//    self.Width  := PBox.Width+10;                                                                   //
+//    self.Height := PBox.Height+28;                                                                  //
+    self.ClientWidth  := PBox.Width+4;                                                              //
+    self.ClientHeight := PBox.Height+4;                                                             //
                                                                                                     //
     with WBitmap.Canvas do                                                                          //
     begin                                                                                           //
