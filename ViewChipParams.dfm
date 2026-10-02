@@ -21,7 +21,7 @@ object ChipsDlg: TChipsDlg
   OnMouseDown = AnyCompMouseDown
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 13
   object ChipLab: TLabel
     Left = 6

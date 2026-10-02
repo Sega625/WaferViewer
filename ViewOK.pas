@@ -290,9 +290,10 @@ end;                                                          //
 procedure TOKDlg.PBoxMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);                 //
 var                                                                                                                       //
   Ngr: Integer;                                                                                                           //
-  S: String[5];                                                                                                           //
+  S: String;                                                                                                           //
   Str: String;                                                                                                            //
   dY: Integer;                                                                                                            //
+  Val_R, Val_L: Real; // Правый и левый предел параметра
 begin                                                                                                                     //
   if Length(Groups.Group) = 0 then Exit;                                                                                  //
                                                                                                                           //
@@ -334,18 +335,45 @@ begin                                                                           
   end;                                                                                                                    //
                                                                                                                           //
   case AccCB.ItemIndex of                                                                                                 //
-    0    : S := '0.000';                                                                                                  //
-    1    : S := '0.00';                                                                                                   //
-    2    : S := '0.0';                                                                                                    //
-    3,4,5: S := '0';                                                                                                      //
+    0: begin                                                                                                              //
+         S := '0.0000';                                                                                                   //
+         Val_L := 0.0005;                                                                                                 //
+         Val_R := 0.0004                                                                                                  //
+       end;                                                                                                               //
+    1: begin                                                                                                              //
+         S := '0.000';                                                                                                    //
+         Val_L := 0.005;                                                                                                  //
+         Val_R := 0.004                                                                                                   //
+       end;                                                                                                               //
+    2: begin                                                                                                              //
+         S := '0.00';                                                                                                     //
+         Val_L := 0.05;                                                                                                   //
+         Val_R := 0.04                                                                                                    //
+       end;                                                                                                               //
+    3: begin                                                                                                              //
+         S := '0.0';                                                                                                      //
+         Val_L := 0.5;                                                                                                    //
+         Val_R := 0.4                                                                                                     //
+       end;                                                                                                               //
+    4: begin                                                                                                              //
+         S := '0';                                                                                                        //
+         Val_L := 5;                                                                                                      //
+         Val_R := 4                                                                                                       //
+       end;                                                                                                               //
+    5: begin                                                                                                              //
+         S := '0';                                                                                                        //
+         Val_L := 50;                                                                                                     //
+         Val_R := 40                                                                                                      //
+       end;                                                                                                               //
   end;                                                                                                                    //
   with Groups.Group[Ngr] do                                                                                               //
-    Str := ' Значение: '+FormatFloat(S, Val)+#13+' Кол-во: '+IntToStr(Quantity);                                          //
+    Str := ' От '+FormatFloat(S, Val-Val_L)+#13+' До '+FormatFloat(S, Val+Val_R)+#13+' Кол-во: '+IntToStr(Quantity);      //
+//    Str := ' Значение: '+FormatFloat(S, Val)+#13+' Кол-во: '+IntToStr(Quantity);                                          //
                                                                                                                           //
   HintRect.Left  := X+self.Left-ScrollBox.HorzScrollBar.ScrollPos;                                                        //
   HintRect.Right := HintRect.Left+Hint.Canvas.TextWidth(Str)-Hint.Canvas.TextWidth(' Кол-во: ');                          //
   HintRect.Top    := Y+self.Top;                                                                                          //
-  HintRect.Bottom := HintRect.Top+2*(Hint.Canvas.TextHeight(Str)+2);                                                      //
+  HintRect.Bottom := HintRect.Top+3*(Hint.Canvas.TextHeight(Str)+2);                                                      //
                                                                                                                           //
   Hint.ActivateHint(HintRect, Str);                                                                                       //
 end;                                                                                                                      //

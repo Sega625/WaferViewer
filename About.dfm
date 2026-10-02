@@ -1,14 +1,14 @@
 object AboutDlg: TAboutDlg
-  Left = 384
-  Top = 192
+  Left = 874
+  Top = 315
   BorderStyle = bsDialog
   Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
-  ClientHeight = 208
-  ClientWidth = 315
+  ClientHeight = 272
+  ClientWidth = 412
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
   Icon.Data = {
@@ -59,65 +59,65 @@ object AboutDlg: TAboutDlg
   OldCreateOrder = False
   OnClick = FormClick
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object FileVerLab: TLabel
-    Left = 63
-    Top = 103
-    Width = 198
-    Height = 19
+    Left = 82
+    Top = 135
+    Width = 259
+    Height = 25
     Alignment = taCenter
     AutoSize = False
     Caption = 'WaferViewer v 0.0.0.0'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clNavy
-    Font.Height = -16
+    Font.Height = -22
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
     OnClick = FormClick
   end
   object Label2: TLabel
-    Left = 73
-    Top = 174
-    Width = 185
-    Height = 16
+    Left = 95
+    Top = 228
+    Width = 242
+    Height = 21
     Caption = '(c) '#1057#1091#1073#1073#1086#1090#1080#1085' '#1057#1077#1088#1075#1077#1081' 2015-2024'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clGray
-    Font.Height = -13
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     OnClick = FormClick
   end
   object WinVerLab: TLabel
-    Left = 7
-    Top = 75
-    Width = 300
-    Height = 16
+    Left = 9
+    Top = 98
+    Width = 392
+    Height = 21
     Alignment = taCenter
     AutoSize = False
     Caption = 'Windows'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clTeal
-    Font.Height = -13
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     OnClick = FormClick
   end
   object Label3: TLabel
-    Left = 73
-    Top = 131
-    Width = 176
-    Height = 40
+    Left = 95
+    Top = 171
+    Width = 231
+    Height = 53
     Alignment = taCenter
     AutoSize = False
     Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1072' '#1076#1083#1103' '#1087#1088#1086#1089#1084#1086#1090#1088#1072' '#1080' '#1072#1085#1072#1083#1080#1079#1072' '#1092#1072#1081#1083#1086#1074' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1080
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
-    Font.Height = -13
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -125,10 +125,10 @@ object AboutDlg: TAboutDlg
     OnClick = FormClick
   end
   object Image1: TImage
-    Left = 55
-    Top = 15
-    Width = 199
-    Height = 54
+    Left = 72
+    Top = 20
+    Width = 260
+    Height = 70
     Picture.Data = {
       0A544A504547496D616765BF0E0000FFD8FFE000104A46494600010101006000
       600000FFE100464578696600004D4D002A000000080004011200030000000100

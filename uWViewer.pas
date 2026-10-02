@@ -59,7 +59,6 @@ type
     DirBox: TPaintBox;
     CutLab: TLabel;
     CutLab0: TLabel;
-    XPManifest1: TXPManifest;
     InformationLab0: TLabel;
     AdjustLab0: TLabel;
     NTotLab0: TLabel;
@@ -79,7 +78,7 @@ type
     StepYLab: TLabel;
     StepXLab: TLabel;
     DiamLab: TLabel;
-    mAdd: TMenuItem;
+    mAddMap: TMenuItem;
     mFull: TMenuItem;
     OKRLab0: TLabel;
     OKRLab: TLabel;
@@ -124,7 +123,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure mPrMapClick(Sender: TObject);
     procedure mAdjustClick(Sender: TObject);
-    procedure mAddClick(Sender: TObject);
+    procedure mAddMapClick(Sender: TObject);
     procedure mFullClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure mExcelClick(Sender: TObject);
@@ -152,8 +151,8 @@ type
 
     procedure PaintWafer(Max: WORD);
     procedure ProcessMessagesEx;
-    function  LoadFile(const fName: TFileName): Boolean;
-    function  AddFile (const fName: TFileName): Boolean;
+    function  LoadFile  (const fName: TFileName): Boolean;
+    function  AddMapFile(const fName: TFileName): Boolean;
     function  DetectFileType(const fName: TFileName): byte;
 
     procedure ViewOK_Repaint_Event(var Mes: TMessage); message MESS_REPAINT_VIEW_OK;
@@ -303,6 +302,7 @@ begin                                                                           
   end;                                                                                               //
                                                                                                      //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                     //
   Statistica := TStatistica.Create(self);                                                            //
   with Statistica do                                                                                 //
   begin                                                                                              //
@@ -478,7 +478,7 @@ begin                                                                           
   with OpenDlg do                                                                 //
   begin                                                                           //
     InitialDir := StatPath;                                                       //
-    Filter := 'Файлы статистики (*.sts, *.txt, *.map)|*.sts;*.txt;*.map;*';       //
+    Filter := 'Файлы статистики |*.*';                                            //
     Title := 'Открыть файл статистики';                                           //
                                                                                   //
     if Execute then LoadFile(FileName);                                           //
@@ -488,7 +488,7 @@ begin                                                                           
 end;                                                                              //
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-procedure TForm1.mAddClick(Sender: TObject);                                      //
+procedure TForm1.mAddMapClick(Sender: TObject);                                   //
 var                                                                               //
   OpenDlg: TOpenDialog;                                                           //
 begin                                                                             //
@@ -496,10 +496,10 @@ begin                                                                           
   with OpenDlg do                                                                 //
   begin                                                                           //
     InitialDir := StatPath;                                                       //
-    Filter := 'Файлы статистики (*.sts, *.txt, *.map)|*.sts;*.txt;*.map;*';       //
+    Filter := 'Файлы статистики |*.*';                                            //
     Title := 'Открыть файл статистики';                                           //
                                                                                   //
-    if Execute then AddFile(FileName);                                            //
+    if Execute then AddMapFile(FileName);                                         //
                                                                                   //
     Free;                                                                         //
   end;                                                                            //
@@ -654,6 +654,8 @@ begin                                                                           
     with Statistica.Wafer do                                                      //
     begin                                                                         //
       if Length(TestsParams) = 0 then Exit;                                       //
+
+      if Info = 'Вариант 2' then Exit; // Вариант Вадима ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                   //
       try                                                                         //
         if FullChipsDlg <> nil then FreeAndNil(FullChipsDlg);                     //
@@ -705,6 +707,8 @@ begin                                                                           
     with Statistica.Wafer do                                                      //
     begin                                                                         //
       if Length(TestsParams) = 0 then Exit;                                       //
+
+      if Info = 'Вариант 2' then Exit; // Вариант Вадима ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                   //
       try                                                                         //
         if DataDlg <> nil then FreeAndNil(DataDlg);                               //
@@ -729,6 +733,8 @@ begin                                                                           
     with Statistica.Wafer do                                                      //
     begin                                                                         //
       if Length(TestsParams) = 0 then Exit;                                       //
+
+      if Info = 'Вариант 2' then Exit; // Вариант Вадима ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                   //
       try                                                                         //
         if OKDlg <> nil then FreeAndNil(OKDlg);                                   //
@@ -752,6 +758,8 @@ begin                                                                           
   if Statistica.Wafer <> nil then                                                 //
     with Statistica.Wafer do                                                      //
     begin                                                                         //
+      if Info = 'Вариант 2' then Exit; // Вариант Вадима ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       if Length(Statistica.Wafer.PD) = 0 then                                     //
       begin                                                                       //
         ErrMess(Handle, 'Размер кадра не известен!');                             //
@@ -857,6 +865,7 @@ begin                                          //
          end;                                  //
       1: begin                                 //
            RotateWafer;                        //
+           Wafer.CalcChips;
            FillLabels;                         //
          end;                                  //
       2: SizeChipX := SizeChipX+1;             //
@@ -980,10 +989,14 @@ begin                                                         //
      1: if Statistica.LoadSTS   (fName) then Result := True;  //
     20: if Statistica.LoadNI    (fName) then Result := True;  //
     21: if Statistica.LoadNI2   (fName) then Result := True;  //
-     3: if Statistica.LoadXML   (fName) then Result := True;  //
+    31: if Statistica.LoadXML   (fName) then Result := True;  //
+    32: if Statistica.LoadCSV   (fName) then Result := True;  //
+    33: if Statistica.Load6190  (fName) then Result := True;  //
      4: if Statistica.LoadAGL   (fName) then Result := True;  //
      5: if Statistica.LoadXLS2  (fName) then Result := True;  //
      6: if Statistica.LoadXLSPxn(fName) then Result := True;  //
+     7: if Statistica.LoadNIVslk(fName) then Result := True;  //
+
   end;                                                        //
                                                               //
   if Result then self.Caption := MainCapt+'   '+fName         //
@@ -992,18 +1005,17 @@ begin                                                         //
 end;                                                          //
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-function TForm1.AddFile(const fName: TFileName): Boolean;     //
+function TForm1.AddMapFile(const fName: TFileName): Boolean;  //
 begin                                                         //
   Result := False;                                            //
                                                               //
   case DetectFileType(fName) of                               //
      0: ErrMess(Handle, 'Неизвестный формат файла: '+fName);  //
      1: if Statistica.AddSTS(fName) then Result := True;      //
-    20: if Statistica.AddNI (fName) then Result := True;      //
-    21: if Statistica.AddNI2(fName) then Result := True;      //
-     3: if Statistica.AddXML(fName) then Result := True;      //
-     4: if Statistica.AddAGL(fName) then Result := True;      //
-     5: if Statistica.AddXLS(fName) then Result := True;      //
+    31: if Statistica.AddXML(fName) then Result := True;      //
+    32: if Statistica.AddCSV (fName) then Result := True;     //
+    33: if Statistica.Add6190(fName) then Result := True;     //
+     4: if Statistica.AddAGL (fName) then Result := True;     //
   end;                                                        //
                                                               //
   if Result then self.Caption := MainCapt+'   '+fName;        //
@@ -1034,24 +1046,24 @@ begin                                                         //
     Result := 1; // STS                                       //
     Exit;                                                     //
   end;                                                        //
+                                                              //
   if Pos('изделие', Str) <> 0 then // NI                      //
   begin                                                       //
     SL := TStringList.Create;                                 //
     SL.LoadFromFile(fName);                                   //
     for n := 0 to SL.Count-1 do                               //
-    begin
+    begin                                                     //
 //      if (Pos('=', SL.Strings[n]) <> 0) or                    //
 //         (Pos('#', SL.Strings[n]) <> 0) then Continue         //
-      tmpStr := Trim(SL.Strings[n]);
-      try StrToInt(tmpStr[1])
-      except
-        Continue;
-      end;                                                        //
-//      begin                                                   //
-        Str := Trim(SL.Strings[n]);                                 //
+      tmpStr := Trim(SL.Strings[n]);                          //
+      try
+        StrToInt(tmpStr[1]);                                  //
+      except                                                  //
+        Continue;                                             //
+      end;                                                    //
+        Str := Trim(SL.Strings[n]);                           //
         Break;                                                //
-//      end;                                                    //
-    end;
+    end;                                                      //
     SL.Free;                                                  //
                                                               //
     Delete(Str, 1, Pos(#9, Str)); // Удалим номер кристалла   //
@@ -1073,19 +1085,42 @@ begin                                                         //
       Exit;                                                   //
     end;                                                      //
   end;                                                        //
-  if Pos('<ibis_wafer_data>', Str) <> 0 then                  //
-  begin                                                       //
-    Result := 3; // Зонд 6290                                 //
-    Exit;                                                     //
-  end;                                                        //
+                                                              //
   if Pos('testflow started', Str) <> 0 then                   //
   begin                                                       //
     Result := 4; // Agilent93K (Verigy93K)                    //
     Exit;                                                     //
   end;                                                        //
+                                                              //
   if (Pos('pk', Str) <> 0) or (Pos('рп', Str) <> 0) then // XLS
   begin                                                       //
     Result := Statistica.DetectXLS(fName); // Пиксан или Form //
+    Exit;                                                     //
+  end;                                                        //
+                                                              //
+  if Pos('<ibis_wafer_data>', Str) <> 0 then                  //
+  begin                                                       //
+    Result := 31; // Зонд 6190 и похожие (MAP)                //
+    Exit;                                                     //
+  end;                                                        //
+                                                              //
+  if Pos('major_format', Str) <> 0 then                       //
+  begin                                                       //
+    Result := 32; // Зонд 6190 и похожие (CSV)                //
+    Exit;                                                     //
+  end;                                                        //
+                                                              //
+  if Pos('[wafer]', Str) <> 0 then                            //
+  begin                                                       //
+    Result := 33; // Зонд 6190 и похожие (Без расширения)     //
+    Exit;                                                     //
+  end;                                                        //
+                                                              //
+  //  if Pos('1	:', Str) <> 0 then                                //
+  tmpStr := Copy(Str, Pos(#9, Str)+1, 1);                     //
+  if tmpStr = ':' then                                        //
+  begin                                                       //
+    Result := 7; // NI Вариант "Василёк"                      //
 //    Exit;                                                     //
   end;                                                        //
 end;                                                          //
@@ -1288,10 +1323,10 @@ begin                                                               //
         end;                                                        //
       end;                                                          //
                                                                     //
-      mAdd.Enabled   := True;                                       //
-      mSave.Enabled  := True;                                       //
-      mPrint.Enabled := True;                                       //
-      mPrMap.Enabled := True;                                       //
+      mAddMap.Enabled := True;                                      //
+      mSave.Enabled   := True;                                      //
+      mPrint.Enabled  := True;                                      //
+      mPrMap.Enabled  := True;                                      //
 
 //      ShowMessage(GetExcelAppName2());
 
@@ -1345,16 +1380,16 @@ begin                                                               //
                                                                     //
   Caption := MainCapt;                                              //
                                                                     //
-  mAdd.Enabled   := False;                                          //
-  mSave.Enabled  := False;                                          //
-  mPrint.Enabled := False;                                          //
-  mPrMap.Enabled := False;                                          //
-  mExcel.Enabled := False;                                          //
-  mFull.Enabled  := False;                                          //
-  mFails.Enabled := False;                                          //
-  mData.Enabled  := False;                                          //
-  mOK.Enabled    := False;                                          //
-  mPD.Enabled    := False;                                          //
+  mAddMap.Enabled := False;                                         //
+  mSave.Enabled   := False;                                         //
+  mPrint.Enabled  := False;                                         //
+  mPrMap.Enabled  := False;                                         //
+  mExcel.Enabled  := False;                                         //
+  mFull.Enabled   := False;                                         //
+  mFails.Enabled  := False;                                         //
+  mData.Enabled   := False;                                         //
+  mOK.Enabled     := False;                                         //
+  mPD.Enabled     := False;                                         //
 end;                                                                //
 //////////////////////////////////////////////////////////////////////
 

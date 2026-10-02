@@ -9,6 +9,7 @@ uses
 type
   TPDDlg = class(TForm)
     PBox: TPaintBox;
+    
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -95,10 +96,10 @@ var                                                                             
   Col: TColor;                                                                                      //
   Count: DWORD;                                                                                     //
 begin                                                                                               //
-  SizeChipX := 30;                                                                                  //
-  SizeChipY := 20;                                                                                  //
-  OffsX := 15;                                                                                      //
-  OffsY := 15;                                                                                      //
+  SizeChipX := 60;                                                                                  //
+  SizeChipY := 40;                                                                                  //
+  OffsX := 20;                                                                                      //
+  OffsY := 20;                                                                                      //
                                                                                                     //
   WBitmap.Canvas.Brush.Color := $0080FFFF;                                                          //
                                                                                                     //
@@ -122,13 +123,16 @@ begin                                                                           
                                                                                                     //
     with WBitmap.Canvas do                                                                          //
     begin                                                                                           //
-      Font.Height := 11;                                                                            //
-      Font.Color := clBlack;                                                                        //
+      Font.Height := 18;      //                                                                    //
+      Font.Color := clGray;   //                                                                    //
+      Font.Style := [fsBold]; //                                                                    //
+      Font.Name := 'Roboto';  //                                                                    //
+                                                                                                    //
       for X := 0 to Length(PD[0])-1 do                                                              //
       begin                                                                                         //
         MoveTo(OffsX+X*SizeChipX, OffsY);                                                           //
         LineTo(OffsX+X*SizeChipX, OffsY-6);                                                         //
-        TextOut(SizeChipX*X+SizeChipX+1, 2, IntToStr(X+1));                                         //
+        TextOut(SizeChipX*X+SizeChipX-12, 2, IntToStr(X+1));                                        //
       end;                                                                                          //
       MoveTo(OffsX+Length(PD[0])*SizeChipX, OffsY);                                                 //
       LineTo(OffsX+Length(PD[0])*SizeChipX, OffsY-6);                                               //
@@ -136,11 +140,13 @@ begin                                                                           
       begin                                                                                         //
         MoveTo(OffsX,   OffsY+Y*SizeChipY);                                                         //
         LineTo(OffsX-6, OffsY+Y*SizeChipY);                                                         //
-        TextOut(3, SizeChipY*Y+SizeChipY+2, IntToStr(Y+1));                                         //
+        TextOut(6, SizeChipY*Y+SizeChipY-8, IntToStr(Y+1));                                         //
       end;                                                                                          //
       MoveTo(OffsX,   OffsY+Length(PD)*SizeChipY);                                                  //
       LineTo(OffsX-6, OffsY+Length(PD)*SizeChipY);                                                  //
-      Font.Height := 13;                                                                            //
+                                                                                                    //
+      Font.Height := 25;                                                                            //
+      Font.Style  := [];                                                                            //
                                                                                                     //
       for Y := 0 to Length(PD)-1 do                                                                 //
         for X := 0 to Length(PD[0])-1 do                                                            //
@@ -188,7 +194,7 @@ begin                                                                           
                                                                                     //
     Rectangle(XY.X, XY.Y, XY.X+SizeChipX+1, XY.Y+SizeChipY+1);                      //
                                                                                     //
-    TextOut(XY.X+3, XY.Y+2, IntToStr(Count));                                       //
+    TextOut(XY.X+18, XY.Y+8, IntToStr(Count));                                      //
   end;                                                                              //
 end;                                                                                //
 //////////////////////////////////////////////////////////////////////////////////////

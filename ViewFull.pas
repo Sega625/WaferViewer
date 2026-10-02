@@ -68,8 +68,8 @@ begin                                                                           
   ParamsSG.RowCount := fNChips+1;                                                                            //
                                                                                                              //
   ParamsSG.Cells[0, 0] := ' ¹';                                                                              //
-  for n := 0 to fNTests do ParamsSG.Cells[n+1, 0] := pStatistica^.Wafer.TestsParams[n].Name;                 //
-  for m := 0 to fNChips do ParamsSG.Cells[0, m+1] := IntToStr(m+1);                                          //
+  for n := 0 to fNTests-1 do ParamsSG.Cells[n+1, 0] := pStatistica^.Wafer.TestsParams[n].Name;                 //
+  for m := 0 to fNChips-1 do ParamsSG.Cells[0, m+1] := IntToStr(m+1);                                          //
                                                                                                              //
   m := 0;                                                                                                    //
   with pStatistica^.Wafer do                                                                                 //
@@ -267,7 +267,7 @@ begin                                                                           
       HintRect.Bottom := HintRect.Top+18;                                                                            //
       HintRect.Left  := self.Left+OffsetX+ParamsSG.Left+(ActCol-ParamsSG.LeftCol+1)*65;                              //
       TmpStr :=  pStatistica^.Wafer.TestsParams[ActCol-1].Name;                                                      //
-      HintRect.Right := HintRect.Left+(Length(TmpStr)*8);                                                            //
+      HintRect.Right := HintRect.Left+(Length(TmpStr)*15);   ///////////                                                         //
                                                                                                                      //
       HintTName.ActivateHint(HintRect, TmpStr);                                                                      //
     end;                                                                                                             //

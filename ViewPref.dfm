@@ -1,6 +1,6 @@
 object PrefDlg: TPrefDlg
-  Left = 528
-  Top = 220
+  Left = 1417
+  Top = 313
   BorderStyle = bsToolWindow
   Caption = ' '#1053#1072#1089#1090#1088#1086#1081#1082#1080
   ClientHeight = 351
@@ -13,7 +13,7 @@ object PrefDlg: TPrefDlg
   Font.Style = []
   OldCreateOrder = False
   Scaled = False
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 13
   object InfoGroup: TGroupBox
     Left = 7

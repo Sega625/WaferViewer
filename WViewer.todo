@@ -5,7 +5,7 @@
 {DONE -oViewOK : При распределении считаютя NotSpec параметры}
 {DONE -oViewOK : При добавлении пластины кол-во браков и годных удваивается}
 {DONE -oStatistica : SaveSTS сохраняет . и , (нужно переделать)}
-{TODO -oStatistica :
+{DONE -oStatistica :
 Diametr : WORD;
     LDiametr: Real;
     Radius  : Real;

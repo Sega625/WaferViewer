@@ -20,7 +20,7 @@ object FullChipsDlg: TFullChipsDlg
   OnKeyDown = FormKeyDown
   OnMouseDown = AnyCompMouseDown
   OnResize = FormResize
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 13
   object ParamsSG: TStringGrid
     Left = 6

@@ -4,7 +4,9 @@ program WViewer;
 
 uses
   Forms,
-  uWViewer in 'uWViewer.pas' {Form1};
+  uWViewer in 'uWViewer.pas' {Form1},
+  Structs in 'Structs.pas',
+  Statistica in 'Statistica.pas';
 
 {$R *.res}
 

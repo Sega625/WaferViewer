@@ -25,7 +25,8 @@ type
   public
     constructor Create(AOwner: TComponent; pTstsParams: PTestsParams);
 
-    function PreShowChip(Chip: TChip; StatusName: String): TPoint;
+    function PreShowChip (Chip: TChip; StatusName: String): TPoint;
+    function PreShowChip2(Chip: TChip; StatusName: String): TPoint;
   private
     pTestsParams: PTestsParams;
     fOnChipDlgClose: TOnChipDlgClose;
@@ -91,7 +92,8 @@ begin                                                                           
   if fNTests = 0 then                                                                           //
   begin                                                                                         //
     self.Width  := 200;                                                                         //
-    self.Height := 56;                                                                          //
+//    self.Height := 70;//56;                                                                          //
+    self.ClientHeight := 2;                                                                     //
                                                                                                 //
     self.Constraints.MinHeight := self.Height;                                                  //
     self.Constraints.MaxHeight := self.Height;                                                  //
@@ -329,6 +331,104 @@ begin                                                                    //
         MaxLab[n].Color     := Col;                                      //
                                                                          //
         ValLab[n].Caption := 'XXXX';                                     //
+      end;                                                               //
+    end;                                                                 //
+                                                                         //
+  Result.X := self.Width;                                                //
+  Result.Y := self.Height;                                               //
+end;                                                                     //
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+function TChipsDlg.PreShowChip2(Chip: TChip; StatusName: String): TPoint; //
+                                                                         //
+///////////////////////////////////////////////////////////////          //
+  function IsFailParam(const Num: WORD): Boolean;            //          //
+  begin                                                      //          //
+    Result := False;                                         //          //
+                                                             //          //
+   if (pTestsParams^[Num].Status > 1999) and                 //          //
+      (pTestsParams^[Num].Status < 4501) then                //          //
+     if Length(pTestsParams^) > 0 then                       //          //
+       with pTestsParams^[Num].Norma do                      //          //
+         if Chip.ChipParams[Num].Value <> NotSpec then                  //          //
+         begin                                               //          //
+           if (Min = -NotSpec)  and (Max <> NotSpec) then    //          //
+             if Chip.ChipParams[Num].Value > Max then Result := False;  //          //
+                                                             //          //
+           if (Min <> -NotSpec) and (Max = NotSpec)  then    //          //
+             if Chip.ChipParams[Num].Value < Min then Result := False;  //          //
+                                                             //          //
+           if (Min <> -NotSpec) and (Max <> NotSpec) then    //          //
+             if (Chip.ChipParams[Num].Value < Min) or                   //          //
+                (Chip.ChipParams[Num].Value > Max) then Result := True; //          //
+         end                                                 //          //
+         else Result := True;                                //          //
+  end;                                                       //          //
+///////////////////////////////////////////////////////////////          //
+                                                                         //
+var                                                                      //
+  n: WORD;                                                               //
+  Col, TmpCol: TColor;                                                   //
+begin                                                                    //
+  ChipLab.Caption := GetStatusString(Chip.Status);                       //
+                                                                         //
+  ChipLab.Font.Color := GetMainColor(Chip.Status);                       //
+  if ChipLab.Font.Color = clLime then ChipLab.Font.Color := clGreen;     //
+  ChipLabInfo.Caption := StatusName;                                     //
+  ChipLabInfo.Font.Color := ChipLab.Font.Color;                          //
+                                                                         //
+  Col := $00EAEAEA;                                                      //
+  if fNTests > 0 then                                                    //
+//  if Length(Chip.ChipParams) > 0 then
+//    for n := 0 to Length(Chip.ChipParams)-1 do                           //
+    for n := 0 to fNTests-1 do                                           //
+    begin                                                                //
+      if Col = clWhite then Col := $00EAEAEA                             //
+                       else Col := clWhite;                              //
+                                                                         //
+      if Length(Chip.ChipParams) > 0 then                                //
+      begin                                                              //
+        TmpCol := Col;                                                   //
+//        if IsFailParam(n) then Col := $00BFBFFF; // Розовый, если брак   //
+        if Chip.ChipParams[n].Stat in [2,3] then Col := $00BFBFFF; // Розовый, если брак   //
+                                                                         //
+        NLab[n].Color       := Col;                                      //
+        ValNameLab[n].Color := Col;                                      //
+        ValLab[n].Color     := Col;                                      //
+        MinLab[n].Color     := Col;                                      //
+        MaxLab[n].Color     := Col;                                      //
+        Col := TmpCol;                                                   //
+
+        ValNameLab[n].Caption := Chip.ChipParams[n].Name+' - '+Chip.ChipParams[n].AddInfo;
+
+
+        if Chip.ChipParams[n].Norma.Min <> -NotSpec then
+          MinLab[n].Caption := FormatFloat('0.000', Chip.ChipParams[n].Norma.Min)
+        else
+          MinLab[n].Caption := 'нет';
+
+        if Chip.ChipParams[n].Value <> NotSpec then
+          ValLab[n].Caption := FormatFloat('0.000', Chip.ChipParams[n].Value)
+        else
+          ValLab[n].Caption := 'нет';
+
+        if Chip.ChipParams[n].Norma.Max <> NotSpec then
+          MaxLab[n].Caption := FormatFloat('0.000', Chip.ChipParams[n].Norma.Max)
+        else
+          MaxLab[n].Caption := 'нет';
+      end                                                                //
+      else                                                               //
+      begin                                                              //
+        NLab[n].Color       := Col;                                      //
+        ValNameLab[n].Color := Col;                                      //
+        ValLab[n].Color     := Col;                                      //
+        MinLab[n].Color     := Col;                                      //
+        MaxLab[n].Color     := Col;                                      //
+                                                                         //
+        MinLab[n].Caption := 'XXXX';
+        ValLab[n].Caption := 'XXXX';                                     //
+        MaxLab[n].Caption := 'XXXX';
       end;                                                               //
     end;                                                                 //
                                                                          //

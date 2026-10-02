@@ -1,8 +1,8 @@
 object Form1: TForm1
   Left = 454
   Top = 150
-  Width = 983
-  Height = 826
+  Width = 1124
+  Height = 838
   AlphaBlend = True
   Color = clBtnFace
   TransparentColor = True
@@ -23,7 +23,7 @@ object Form1: TForm1
   OnPaint = FormPaint
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 16
   object WafInfoGroup: TGroupBox
     Left = 5
@@ -928,11 +928,11 @@ object Form1: TForm1
         ShortCut = 16463
         OnClick = mOpenClick
       end
-      object mAdd: TMenuItem
+      object mAddMap: TMenuItem
         Caption = #1044#1086#1073#1072#1074#1080#1090#1100
         ImageIndex = 18
         ShortCut = 16452
-        OnClick = mAddClick
+        OnClick = mAddMapClick
       end
       object mSave: TMenuItem
         Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1082#1072#1082' ...'
@@ -1830,9 +1830,5 @@ object Form1: TForm1
       0001C003800100000003E007818100000E03E007C3C30000FF07E007E7E70000
       FFCFE007E7E70000FFFFE007FFFF800100000000000000000000000000000000
       000000000000}
-  end
-  object XPManifest1: TXPManifest
-    Left = 296
-    Top = 64
   end
 end

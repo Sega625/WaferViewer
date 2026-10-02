@@ -1,8 +1,8 @@
 object OKDlg: TOKDlg
   Left = 287
   Top = 272
-  Width = 904
-  Height = 271
+  Width = 906
+  Height = 280
   BorderIcons = [biSystemMenu]
   Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077
   Color = clBtnFace
@@ -64,7 +64,7 @@ object OKDlg: TOKDlg
   OnMouseWheel = FormMouseWheel
   OnPaint = FormPaint
   OnShow = FormShow
-  PixelsPerInch = 96
+  PixelsPerInch = 120
   TextHeight = 13
   object PrnImg: TImage
     Left = 4
